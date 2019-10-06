@@ -1,0 +1,189 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+
+  <a class="navbar-brand" href="/">TO-DO List Application</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+
+    <span class="navbar-toggler-icon"></span>
+
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item">
+
+        <a class="nav-link" style="cursor: pointer" (click)="goToSignIn()">SignIn</a>
+
+      </li>
+
+    </ul>
+
+  </div>
+
+</nav>
+
+<div class="row p-0 m-0">
+
+  <div class="col-sm"></div>
+
+  <div class="col-sm p-5">
+
+    <h2 class="form-signin-heading">Sign Up To Create your TO-DO List</h2>
+
+    <br>
+
+    <span>FirstName: </span>
+
+    <label for="inputFirstName" class="sr-only">FirstName</label>
+
+    <input type="text" #first="ngModel" pattern="^[A-Z][A-za-z ]+$" minlength="2" id="inputFirstName" class="form-control" [(ngModel)]="firstName" placeholder="FirstName" required autofocus>
+
+    <br>
+    <div [hidden]="first.pristine || first.valid" class="alert alert-danger">
+      <div *ngIf="first.errors?.pattern">
+        Warning : Please tart with Capital and contain only letters !
+            <div *ngIf="first.errors?.minlength">
+              Warning : Minimum 2 letters required!
+            </div>
+      </div>
+      <div *ngIf="first.errors?.required">
+        Warning : First Name is required!
+      </div>
+
+    </div>
+
+
+
+    <span>LastName: </span>
+
+    <label for="inputLastName" class="sr-only">LastName</label>
+
+    <input type="text" #last="ngModel" pattern="^[A-Z][A-za-z ]+$" minlength="2" id="inputLastName" class="form-control" [(ngModel)]="lastName" placeholder="LastName" required>
+
+    <br>
+
+    <div [hidden]="last.pristine || last.valid" class="alert alert-danger">
+      <div *ngIf="last.errors?.pattern">
+        Warning : Please tart with Capital and contain only letters !
+        <div *ngIf="last.errors?.minlength">
+          Warning : Minimum 2 letters required!
+        </div>
+      </div>
+      <div *ngIf="last.errors?.required">
+        Warning : Last Name is required!
+      </div>
+
+    </div>
+<!--
+    <span>Mobile: </span>
+
+    <label for="inputMobile" class="sr-only">Mobile</label>
+
+    <input type="number" id="inputMobileNumber" class="form-control" [(ngModel)]="mobileNumber" placeholder="Mobile Number" required>
+-->
+
+    <span>Email: </span>
+
+    <label for="inputEmail" class="sr-only">Email address</label>
+
+    <input type="email" #emailId="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="inputEmail" class="form-control" [(ngModel)]="email" placeholder="Email address" required>
+
+    <br>
+    <div [hidden]="emailId.valid || emailId.pristine" class="alert alert-danger">
+      <!--
+        <div *ngIf="emailId.errors?.pattern">
+       Warning : Email is invalid!
+
+      </div>
+      -->
+      
+      <div *ngIf="emailId.errors?.required">
+       Warning : Email is required!
+      </div>
+    </div>
+
+    <span>Password: </span>
+
+    <label for="inputPassword" class="sr-only">Password</label>
+
+    <input type="password" #pass="ngModel" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="inputPassword" class="form-control" [(ngModel)]="password" placeholder="Password" required>
+
+    <br>
+    <div [hidden]="pass.valid || pass.pristine" class="alert alert-danger">
+      <div *ngIf="pass.errors?.pattern">
+       Warning : Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters!
+      </div>
+      <div *ngIf="pass.errors?.required">
+       Warning : Password is required!
+      </div>
+    </div>
+
+
+    <span class="sub-heading">Confirm Password: </span>
+
+    <label for="inputConPassword" class="sr-only">Confirm Password</label>
+
+    <input type="password" #conPass="ngModel"  id="inputConPassword" class="form-control" name="conPass" [(ngModel)]="confirmPassword"
+      placeholder="Confirm Password" required>
+
+    <br>
+   
+    <div [hidden]="conPass.pristine || password==confirmPassword" class="alert alert-danger">
+       <div *ngIf="password!=confirmPassword">
+          Warning : Password and Confirm Password does not match!
+       </div>
+      <div *ngIf="conPass.errors?.required">
+          Warning: Confirm Password is required!
+      </div>
+    </div>
+
+    <span class="sub-heading">Country: </span>
+
+    <label for="inputCountry" class="sr-only">Country</label>
+    
+    <select [(ngModel)]="countryName" #Country="ngModel"  name="countryName" class="form-control" 
+    id="inputCountry" (change)="onChange()" required>
+       <option value="" >Select</option>
+      <option *ngFor="let country of finalCountryList" [value]="country.key">{{country.value}}</option>
+    </select>
+      <br>
+      <div [hidden]="Country.valid || Country.pristine  " class="alert alert-danger">
+      ** Country Name is required 
+      </div>
+    
+
+    <span class="sub-heading">Mobile: </span>
+
+    <label for="inputMobile" class="sr-only">Mobile</label>
+    <div class="input-group">
+        <div class="input-group-text">+{{code}}</div>
+        <input type="number" #mobileNum="ngModel" pattern="^\d{10}$" id="inputMobile" class="form-control" name="mobile" [(ngModel)]="mobile"
+        placeholder="Mobile" required>
+      </div>
+ 
+
+    <br>
+    <div [hidden]="mobileNum.valid || mobileNum.pristine" class="alert alert-danger">
+      <div *ngIf="mobileNum.errors?.pattern">
+        Mobile Number should only start contain only 10 digits!
+
+      </div>
+      <div *ngIf="mobileNum.errors?.required">
+        Mobile Number is required!
+      </div>
+    </div>
+
+
+
+    <button class="btn btn-lg btn-primary btn-block" type="button" (click)="signupFunction()">Sign Up</button>
+
+  </div>
+
+  <div class="col-sm"></div>
+
+</div>
+
+

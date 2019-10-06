@@ -1,0 +1,281 @@
+<div class="container-fluid">
+
+    <div class="col-12 header">
+        <h1>To-Do List Application</h1>
+    </div>
+    <!--Navigation Bar-->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                    <b><a class="nav-link active">Single-User</a></b>
+                </li>
+
+                <li class="nav-item">
+                    <b><a class="nav-link"[routerLink]="['/todo-list-multi']">Multi-User</a></b>
+                </li>
+
+                <li class="nav-item">
+                    <b><a class="nav-link" (click)=logout()>Logout</a></b>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+
+    <!--Modal to add item List-->
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add a New List</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group">
+                        <label for="input">
+                            List Name:
+                        </label>
+
+                        <input [(ngModel)]="listName1" name="name" class="form-control" placeholder="Enter List Name" type="text" />
+
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-md text-white bg-success" data-dismiss="modal" (click)="newtodo()">Save</button>
+                    <button class="btn btn-md text-white bg-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--Modal to edit List-->
+
+    <div id="myModal1" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit List</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group">
+                        <label for="input">
+                            List Name:
+                        </label>
+
+                        <input [(ngModel)]="listName" name="name" class="form-control" placeholder="Edit Name" type="text" />
+
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-md text-white bg-success" data-dismiss="modal" (click)="updatetodoList()">Save</button>
+                    <button class="btn btn-md text-white bg-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--Modal to edit item-->
+    <div id="myModal2" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Item</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group">
+                        <label for="input">
+                            Item Name:
+                        </label>
+
+                        <input [(ngModel)]="itemName" name="name" class="form-control" placeholder="Edit Item Name" type="text" />
+
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-md text-white bg-success" data-dismiss="modal" (click)="updateItem()">Save</button>
+                    <button class="btn btn-md text-white bg-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal to add Sub-item to Item-->
+    <div id="myModal3" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add a Sub-Item to Item</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group">
+                        <label for="input">
+                            Sub-Item Name:
+                        </label>
+
+                        <input [(ngModel)]="subItemName1" name="name" class="form-control" placeholder="Enter Sub-Item Name" type="text" />
+
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-md text-white bg-success" data-dismiss="modal" (click)="createSubItem()">Save</button>
+                    <button class="btn btn-md text-white bg-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--Modal to edit item-->
+    <div id="myModal4" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit Sub-Item</h4>
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-group">
+                            <label for="input">
+                                Sub-Item Name:
+                            </label>
+    
+                            <input [(ngModel)]="subItemName" name="name" class="form-control" placeholder="Edit Sub-Item Name" type="text" />
+            
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-md text-white bg-success" data-dismiss="modal" (click)="updateSubItem()">Save</button>
+                        <button class="btn btn-md text-white bg-danger" data-dismiss="modal">Close</button>
+                    </div>
+    
+                </div>
+            </div>
+    </div>
+
+
+    <!--  SideBar   -->
+
+
+    <div class="row">
+        <div class="col-md-3 aside">
+            <span class="user">
+                <b> Welcome! {{fullName}} </b><br>
+                <small style="font-weight:bold;">Single User Platform</small>
+            </span>
+            <div>
+                <i class="fa fa-plus-square fasquare" data-toggle="modal" data-target="#myModal" title="Add New ToDo List"></i>
+            </div>
+            <hr class="lead">
+            <div *ngFor="let res of response">
+                <div *ngIf = "res.private==true">
+                    <p class="lists">
+                        <span (click)=selectlist(res.listId,res.listName)>
+                            <i class="fa fa-list-alt"></i> {{res.listName}}
+                        </span>
+                        <i class="fa fa-trash-o trash1" title="Delete" (click)=deletetodoList(res.listId)></i>
+                        <i class="fa fa-edit edit1" title="Edit" data-toggle="modal" data-target="#myModal1" (click)="setListName(res.listId,res.listName)"></i>
+                    </p>
+
+                    <small style="font-weight:bold ;font-style:sans-serif;" class="text-muted text-sm">Created on : {{res.createdOn | date}}</small>
+
+                    <hr class="lead">
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--  Task Menu -->
+        <div class="col-md-9">
+            <div class="input">
+                <input [(ngModel)]="itemName1" name="item" style="width:75%; display:inline-block" class="textfield" type="text" placeholder="Add New Item"
+                    (keydown)="addItemUsingKeypress($event)">
+                <i (click)="createItem()" class="fa fa-plus-square square2" title="Add Item"></i>
+                <i (click)="clearUndos()" class="fa fa-minus-circle square2" title="Clear All Undos"></i>
+
+            </div>    
+
+
+            <div *ngIf="!listName" class="col-sm blankContent">
+                Click on List to schedule your task !!!
+            </div>
+
+
+            <div>
+                <div class="listname">{{listName}}<span (click)="undoItem(listId)" style="float:right; padding-right:2em"><i class="fa fa-undo fa-lg" style="cursor:pointer;" title="Undo Item"></i></span></div>
+                <div class="tasklist">
+                    <div *ngFor="let item of itemData">
+                        <div class="itemName" *ngIf="item.listId==listId">
+                            
+                            <input type="checkbox" *ngIf = "item.isDone==false" (click)=markDoneItem(item.itemId) title="Click to Mark Done">
+                            <i class="fa fa-check-circle" style="color:darkgreen" *ngIf = "item.isDone==true" (click)=markOpenItem(item.itemId)  title="Click to Open Again"></i>
+                            {{item.itemName}}
+                            <i *ngIf = "item.isDone==false" (click)="undoSubItem(itemId)" class="fa fa-undo undoSub" style="float :right" title="Undo SubItem"></i>
+                            <i  *ngIf = "item.isDone==false" (click)=deleteItem(item) class="fa fa-trash-o trash2" title="Delete Item"></i>
+                            <i  *ngIf = "item.isDone==false" class="fa fa-pencil edit1" data-toggle="modal" data-target="#myModal2" (click)="setItemName(item.itemId,item.itemName)" (click)="saveItemUpdateHistory(item)" title="Edit Item"></i>
+                            <i  *ngIf = "item.isDone==false" class="fa fa-plus-square squareItem" title="Add SubItem" data-toggle="modal" data-target="#myModal3" (click)="addSubItemIcon(item.itemId)"></i>
+                            
+                        </div>
+
+                        <br>                        
+                            <!-- Sub-Items -->
+                        <div class="leftMargin"  *ngIf="item.listId==listId">
+                            <div *ngFor="let subItem of response1">
+                                <p class="subItemName" *ngIf="subItem.itemId==item.itemId">
+                                    <input type="checkbox" *ngIf ="subItem.isDone==false && item.isDone==false" (click)=markDoneSubItem(subItem.subItemId) title="Click to Mark Done">
+                                    <i class="fa fa-check-circle" *ngIf ="subItem.isDone==true && item.isDone==false" style="color:darkgreen" (click)=markOpenSubItem(subItem.subItemId) title="Click to Mark Open"></i>
+                                    
+                                    {{subItem.subItemName}}
+                                    
+                                    <i *ngIf = "item.isDone==false && subItem.isDone==false" class="fa fa-trash-o trash2" (click)=deleteSubItem(subItem) title="Delete"></i>
+                                    <i *ngIf = "item.isDone==false && subItem.isDone==false" class="fa fa-pencil edit1"  data-toggle="modal" data-target="#myModal4" (click)="setSubItemName(subItem.subItemId,subItem.subItemName)" (click)="saveSubItemUpdateHistory(subItem)" title="Edit Sub-Item"></i>
+                                </p>
+                            </div>
+                        </div>
+                       
+
+                    </div>    
+                    <br>              
+                </div>
+            
+            </div>
+
+
+
+
+
+        </div>
+
+    </div>
+</div>
