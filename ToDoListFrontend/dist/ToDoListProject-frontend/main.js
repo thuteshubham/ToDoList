@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\r\n<ng4-loading-spinner [loadingText]=\"'Please wait...'\"></ng4-loading-spinner>"
+module.exports = "<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
@@ -212,7 +212,7 @@ var AppService = /** @class */ (function () {
     function AppService(http) {
         var _this = this;
         this.http = http;
-        this.url = 'http://api-todoapp.emayurm.in.net';
+        this.url = 'http://localhost:3004';
         this.baseURL = this.url + "/api/v1";
         this.getUserInfoFromLocalstorage = function () {
             return JSON.parse(localStorage.getItem('userInfo'));
@@ -230,10 +230,6 @@ var AppService = /** @class */ (function () {
             var response = _this.http.get('../assets/country-code-list.json');
             return response;
         }; //end
-        //Method to verify email
-        this.verifyEmail = function (data) {
-            return _this.http.get(_this.url + "/api/v1/users/" + data + "/verifyUser");
-        };
         //Get All Users:
         this.getAllpeople = function (token) {
             return _this.http.get(_this.baseURL + "/users/view/allUsers?authToken=" + token);
@@ -426,19 +422,12 @@ var AppService = /** @class */ (function () {
             .set('country', data.country);
         return this.http.post(this.url + "/api/v1/users/signup", params);
     }; // end of signupFunction function.
-    //end method
     AppService.prototype.sendResetLink = function (email) {
         // console.log(this.url+"/api/v1/users/forgotPassword");
         var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]()
             .set('email', email);
         return this.http.post(this.url + "/api/v1/users/forgotPassword", params);
     }; // end of sendResetLink function.
-    AppService.prototype.resetPassword = function (data) {
-        var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]()
-            .set('userId', data.userId)
-            .set('password', data.password);
-        return this.http.post(this.url + "/api/v1/users/resetPassword", params);
-    }; //end resetPassword Function
     AppService.prototype.logout = function () {
         var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]()
             .set('authToken', ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_1__["Cookie"].get('authtoken'));
@@ -475,7 +464,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<!--\n<div class=\"container \">\n  <img src=\"../../assets/not_found.jpg\" class=\"mx-auto d-block\">\n  \n</div>\n-->\n\n\n<div class=\"container\">\n    <div>\n      <div class=\"row mt-5\">\n        <div class=\"col-12\">\n          <img src=\"../../assets/not_found.jpg\" style=\"width:102vmin;height:52vmin\"\n            class=\"img-fluid d-block mx-auto\">\n        </div>\n      </div>\n      <div class=\"row mt-4\">\n        <div class=\"col-12 text-center\">\n            <div class=\"alert alert-danger\" role=\"alert\">\n                User not available, with given email address\n            </div>\n          <h5 class=\"text-danger\">Create account, \n            <a [routerLink]=\"['/signup']\">Signup</a>\n          </h5>\n        </div>\n      </div>\n    </div>\n</div>"
+module.exports = "\r\n\r\n\r\n<div class=\"container\">   \r\n      <div class=\"row mt-4\">\r\n        <div class=\"col-12 text-center\">\r\n            <div class=\"alert alert-danger\" role=\"alert\">\r\n                User not available, with given email address\r\n            </div>\r\n          <h5 class=\"text-danger\">Create account, \r\n            <a [routerLink]=\"['/signup']\">Signup</a>\r\n          </h5>\r\n        </div>\r\n      </div>\r\n    \r\n</div>"
 
 /***/ }),
 
@@ -595,7 +584,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--\n<div class=\"container \">\n\n  <img src=\"https://i.stack.imgur.com/QQOcg.jpg\" class=\"mx-auto d-block\">\n  \n</div>\n-->\n\n\n<div class=\"container\">\n    <div>\n      <div class=\"row mt-5\">\n        <div class=\"col-12\">\n          <img src=\"https://i.stack.imgur.com/QQOcg.jpg\" style=\"width:102vmin;height:52vmin\"\n            class=\"img-fluid d-block mx-auto\">\n        </div>\n      </div>\n      <div class=\"row mt-4\">\n        <div class=\"col-12 text-center\">\n          <h5 class=\"text-danger\">Try Again after email verification\n              <a [routerLink]=\"['/login']\">Redirect to Login</a>\n          </h5>\n        </div>\n      </div>\n    </div>\n</div>"
+module.exports = "\r\n\r\n\r\n<div class=\"container\">\r\n    <div>\r\n      \r\n      <div class=\"row mt-4\">\r\n        <div class=\"col-12 text-center\">\r\n          <h5 class=\"text-danger\">Try Again after email verification\r\n              <a [routerLink]=\"['/login']\">Redirect to Login</a>\r\n          </h5>\r\n        </div>\r\n      </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -672,7 +661,7 @@ var SocketService = /** @class */ (function () {
     function SocketService(http) {
         var _this = this;
         this.http = http;
-        this.baseurl = "http://api-todoapp.emayurm.in.net";
+        this.baseurl = "http://localhost:3004";
         //Authentication Section:
         this.verifyUser = function () {
             return rxjs__WEBPACK_IMPORTED_MODULE_1__["Observable"].create(function (observer) {
@@ -1095,7 +1084,7 @@ module.exports = ".header{\r\n    background-color:#305693;\r\n    color: white;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n    <div class=\"col-12 header\">\n        <h1>To-Do List Application</h1>\n    </div>\n\n    <!--Nav Bar-->\n    <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\"\n            aria-label=\"Toggle navigation\">\n            <span class=\"navbar-toggler-icon\"></span>\n        </button>\n        <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n            <ul class=\"navbar-nav\">\n                <li class=\"nav-item\">\n                    <b><a class=\"nav-link\" [routerLink]=\"['/todo-list']\">Single-User</a></b>\n                </li>\n                <li class=\"nav-item active\">\n                    <b><a class=\"nav-link\">Multi-User</a></b>\n                </li>\n                <li class=\"nav-item\">\n                        <b><a class=\"nav-link\" data-toggle=\"modal\" data-target=\"#friend-list\" >Friends</a></b>\n                </li>\n                <li class=\"nav-item\">\n                    <b><a class=\"nav-link\" (click)=logout()>Logout</a></b>\n                </li>\n            </ul>\n        </div>\n    </nav>\n    <!--End Nav Bar-->\n\n\n    <!-- friends Modal-->\n\n\n    <div id=\"friend-list\" class=\"modal fade\" role=\"dialog\">\n            <div class=\"modal-dialog\">\n                <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                        <h4 class=\"modal-title\">Friend-List</h4>\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\">\n                            &times;\n                        </button>\n                    </div>\n                    <div class=\"modal-body\">\n                        <div class=\"container-fluid\">\n                            <div class=\"row\">\n                                <div class=\"col-12\">\n                                    <h5>All Users:</h5>\n                                    <div *ngFor=\"let user of users1\">\n                                        <p *ngIf=\"userId!=user.userId\">\n                                            <li class=\"list\">{{user.firstName}} {{user.lastName}}</li>\n                                            <button style=\"margin-left:1%; color: white;\" class=\"btn btn-secondary\" (click)=sendreq(user.userId)>Request</button>\n                                        </p>\n                                    </div>\n                                    <h5>Requests:</h5>\n                                    <div *ngFor=\"let user of users1\">\n                                        <div *ngFor=\"let req of user.requests\" >\n                                            <p *ngIf=\"userId==req.receiverId\">\n                                                <li class=\"list\">{{req.senderName}}</li>\n                                                <button style=\"margin:0 1%;\" class=\"btn btn-success\" (click)=acceptReq(req.senderId,req.senderName)>Accept</button>\n                                                <button class=\"btn btn-danger\" (click)=rejectReq(req.senderId)>Reject</button>\n                                            </p>\n                                        </div>\n                                    </div>\n                                    <h5>Friends:</h5>\n                                    <div *ngFor=\"let user of users1\">\n                                        <div *ngIf=\"userId==user.userId\">\n                                            <p *ngFor=\"let frnd of user.friends\">\n                                                <li class=\"list\" style=\"font-size:1.1em\"> {{frnd.friendName}}\n                                                </li>\n                                                <i (click)=deletefriend(frnd.friendId) style=\"margin-left:2%\" class=\"fa fa-trash-o\"></i>\n                                            </p>\n                                        </div>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n    </div>\n    \n    <!--End Friends Modal-->\n\n    <!-- Modal for adding a new public list-->\n    <div id=\"myModal\" class=\"modal fade\" role=\"dialog\">\n        <div class=\"modal-dialog\">\n            <div class=\"modal-content\">\n                <div class=\"modal-header\">\n                    <h4 class=\"modal-title\">Add New Public To-Do List</h4>\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\">\n                        &times;\n                    </button>\n                </div>\n                <div class=\"modal-body\">\n                    <form class=\"form-group\">\n                        <label for=\"input\">\n                            Name:\n                        </label>\n                        <input [(ngModel)]=\"listName1\" name=\"name\" class=\"form-control\" placeholder=\"Enter Name\" type=\"text\" />\n                    </form>\n                </div>\n                <div class=\"modal-footer\">\n                    <button class=\"btn btn-md text-white bg-success\" data-dismiss=\"modal\" (click)=\"newTodoListMulti()\">Save</button>\n                    <button class=\"btn btn-md text-white bg-danger\" data-dismiss=\"modal\">Close</button>\n                </div>\n            </div>\n        </div>\n    </div>\n    <!--End add public list modal-->\n\n    <!-- Modal for updating a public list -->\n    <div id=\"myModal1\" class=\"modal fade\" role=\"dialog\">\n        <div class=\"modal-dialog\">\n            <div class=\"modal-content\">\n                <div class=\"modal-header\">\n                    <h4 class=\"modal-title\">Edit List</h4>\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\">\n                        &times;\n                    </button>\n                </div>\n                <div class=\"modal-body\">\n                    <form class=\"form-group\">\n                        <label for=\"input\">\n                            List Name:\n                        </label>\n\n                        <input [(ngModel)]=\"listName\" name=\"name\" class=\"form-control\" placeholder=\"Edit Name\" type=\"text\" />\n\n\n                    </form>\n                </div>\n                <div class=\"modal-footer\">\n                    <button class=\"btn btn-md text-white bg-success\" data-dismiss=\"modal\" (click)=\"updatetodoListMulti()\">Save</button>\n                    <button class=\"btn btn-md text-white bg-danger\" data-dismiss=\"modal\">Close</button>\n                </div>\n\n            </div>\n        </div>\n    </div>\n    <!--End update public list modal-->\n\n    <!-- Modal for updating a public item -->\n    <div id=\"myModal2\" class=\"modal fade\" role=\"dialog\">\n            <div class=\"modal-dialog\">\n                <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                        <h4 class=\"modal-title\">Edit Item</h4>\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\">\n                            &times;\n                        </button>\n                    </div>\n                    <div class=\"modal-body\">\n                        <form class=\"form-group\">\n                            <label for=\"input\">\n                                Item Name:\n                            </label>\n    \n                            <input [(ngModel)]=\"itemName\" name=\"name\" class=\"form-control\" placeholder=\"Edit Item Name\" type=\"text\" />\n    \n    \n                        </form>\n                    </div>\n                    <div class=\"modal-footer\">\n                        <button class=\"btn btn-md text-white bg-success\" data-dismiss=\"modal\" (click)=\"updateItemMulti()\">Save</button>\n                        <button class=\"btn btn-md text-white bg-danger\" data-dismiss=\"modal\">Close</button>\n                    </div>\n    \n                </div>\n            </div>\n    </div>\n\n    <!--End update public item modal-->\n\n    <!-- Modal for adding a new public sub-item-->\n    <div id=\"myModal3\" class=\"modal fade\" role=\"dialog\">\n            <div class=\"modal-dialog\">\n                <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                        <h4 class=\"modal-title\">Add a Sub-Item to Item</h4>\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\">\n                            &times;\n                        </button>\n                    </div>\n                    <div class=\"modal-body\">\n                        <form class=\"form-group\">\n                            <label for=\"input\">\n                                Sub-Item Name:\n                            </label>\n    \n                            <input [(ngModel)]=\"subItemName1\" name=\"name\" class=\"form-control\" placeholder=\"Enter Sub-Item Name\" type=\"text\" />\n    \n    \n                        </form>\n                    </div>\n                    <div class=\"modal-footer\">\n                        <button class=\"btn btn-md text-white bg-success\" data-dismiss=\"modal\" (click)=\"createSubItemMulti()\">Save</button>\n                        <button class=\"btn btn-md text-white bg-danger\" data-dismiss=\"modal\">Close</button>\n                    </div>\n    \n                </div>\n            </div>\n    </div>\n    <!--End add public item modal-->\n\n    <!-- Modal for updating a new public sub-item-->\n    <div id=\"myModal4\" class=\"modal fade\" role=\"dialog\">\n            <div class=\"modal-dialog\">\n                <div class=\"modal-content\">\n                    <div class=\"modal-header\">\n                        <h4 class=\"modal-title\">Edit Sub-Item</h4>\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\">\n                            &times;\n                        </button>\n                    </div>\n                    <div class=\"modal-body\">\n                        <form class=\"form-group\">\n                            <label for=\"input\">\n                                Sub-Item Name:\n                            </label>\n    \n                            <input [(ngModel)]=\"subItemName\" name=\"name\" class=\"form-control\" placeholder=\"Edit Sub-Item Name\" type=\"text\" />\n            \n                        </form>\n                    </div>\n                    <div class=\"modal-footer\">\n                        <button class=\"btn btn-md text-white bg-success\" data-dismiss=\"modal\" (click)=\"updateSubItemMulti()\">Save</button>\n                        <button class=\"btn btn-md text-white bg-danger\" data-dismiss=\"modal\">Close</button>\n                    </div>\n    \n                </div>\n            </div>\n    </div>\n    <!--End updating public item modal-->\n\n\n\n\n    <div class=\"row\">\n\n        <!--aside-->\n\n        <div class=\"col-md-3 aside\">\n          \n            <span class=\"user\">\n              <b> Welcome! {{userName}} </b><br>\n              <small style=\"font-weight:bold;\">Multi User Platform</small>\n            </span>\n\n            <div>\n                <i class=\"fa fa-plus-square addicon\" data-toggle=\"modal\" data-target=\"#myModal\" title=\"Add List\"></i>\n            </div>\n            <h6 class=\"online\">All Online Users</h6>\n            <div class=\"on-users\" *ngFor=\"let user of users\">\n                    <p *ngIf=\"user.userId!=userId\">\n                        <i class=\"fa fa-user onicon\"></i>\n                        <strong>{{user.fullName}}</strong>\n                    </p>\n            </div>\n\n            \n            <h6 class=\"friends\">My Friends</h6>\n            <div class=\"on-users\" *ngFor=\"let user of users1\">\n                <div *ngIf=\"userId==user.userId\">\n                    <p class=\"lists\" *ngFor=\"let frnd of user.friends\">\n                        <i class=\"fa fa-user onicon\"></i>\n                        <strong>{{frnd.friendName}}</strong>   \n                        <i (click)=deletefriend(frnd.friendId) style=\"margin-left:2%\" class=\"fa fa-trash-o trash1\" title=\"Unfriend\"></i>\n                    </p>\n                </div>\n            </div>\n\n            <hr>\n\n            <h6 class=\"listBar\">Lists</h6>\n            <div *ngFor=\"let list of response\">\n                <div *ngIf=\"list.private==false\">\n                    <p class=\"lists\">\n                        <span (click)=selectlist(list.listId,list.listName)>\n                            <i class=\"fa fa-list-alt\"></i> {{list.listName}}\n                        </span>\n                        <i class=\"fa fa-trash-o trash1\" (click)=deletetodoListMulti(list.listId) title=\"Delete\"></i>\n                        <i class=\"fa fa-edit edit1\" title=\"Edit\"  data-toggle=\"modal\" data-target=\"#myModal1\" (click)=\"setListName(list.listId,list.listName)\"></i>\n                    </p>\n\n                    <br>\n                    <small style=\"font-weight:bold\" class=\"text-muted\">\n                        <i class=\"fa fa-user\"></i> Created By: {{list.creator}} </small>\n                    <hr>\n                </div>\n\n            </div>\n\n\n\n        </div>\n\n        <!-- Main task menu -->\n\n        <div class=\"col-md-9 maintask\">\n            <div class=\"input\">\n                <input [(ngModel)]=\"itemName\" name=\"item\" style=\"width:75%; display:inline-block\" class=\"textfield\" type=\"text\" placeholder=\"Enter New Item\"\n                (keydown)=\"addItemUsingKeypress($event)\">\n                <i (click)=createItem() class=\"fa fa-plus-square square2\" title=\"Add Item\"></i>\n                <i (click)=\"clearUndos()\" class=\"fa fa-minus-circle square2\" title=\"Clear All Undos\"></i>\n            </div>\n\n            <div *ngIf=\"!listName\" class=\"col-sm blankContent\">\n                Click on List to schedule your task !!!\n            </div>\n\n\n            <div class=\"listname\">{{listName}} <span (click)=\"undoItem(listId)\" style=\"float:right; padding-right:2em\"><i class=\"fa fa-undo fa-lg\" style=\"cursor:pointer;\" title=\"Undo Item\"></i></span></div>\n            <div class=\"tasklist\">\n\n                <div *ngFor=\"let item of itemData\">\n                    <div class=\"itemName\"  *ngIf=\"item.listId==listId\">\n                        \n                        <input type=\"checkbox\" *ngIf = \"item.isDone==false\" (click)=markDoneItemMulti(item.itemId) title=\"Click to Mark Done\">\n                        <i class=\"fa fa-check-circle\" style=\"color:darkgreen\"  *ngIf = \"item.isDone==true\" (click)=markOpenItemMulti(item.itemId)  title=\"Click to Open Again\"></i>\n                        {{item.itemName}}\n                        <i *ngIf = \"item.isDone==false\" (click)=\"undoSubItem(itemId)\" class=\"fa fa-undo undoSub\" style=\"float :right\" title=\"Undo SubItem\"></i>\n                        <i *ngIf = \"item.isDone==false\" class=\"fa fa-trash-o trash2\" (click)=deleteItemMulti(item) title=\"Delete Item\"></i>\n                        <i *ngIf = \"item.isDone==false\" class=\"fa fa-pencil edit1\" data-toggle=\"modal\" data-target=\"#myModal2\" (click)=\"setItemName(item.itemId,item.itemName)\" (click)=\"saveItemUpdateHistory(item)\" title=\"Edit Item\"></i>\n                        <i *ngIf = \"item.isDone==false\" class=\"fa fa-plus-square squareItem\" title=\"Add SubItem\" data-toggle=\"modal\" data-target=\"#myModal3\" (click)=\"addSubItemIcon(item.itemId)\"></i>\n\n                    </div>\n\n                    <br>                        \n                        <!-- Sub-Items -->\n                    <div class=\"leftMargin\" *ngIf=\"item.listId==listId\">\n                        <div *ngFor=\"let subItem of response1\">\n                            <p class=\"subItemName\" *ngIf=\"subItem.itemId==item.itemId\">\n                                <input type=\"checkbox\" *ngIf = \"item.isDone==false && subItem.isDone==false\"  (click)=markDoneSubItemMulti(subItem.subItemId) title=\"Click to Mark Done\">\n                                <i class=\"fa fa-check-circle\" *ngIf = \"item.isDone==false && subItem.isDone==true\" style=\"color:darkgreen\" (click)=markOpenSubItemMulti(subItem.subItemId) title=\"Click to Mark Open\"></i>\n                                {{subItem.subItemName}}\n                                <i *ngIf = \"item.isDone==false && subItem.isDone==false\" class=\"fa fa-trash-o trash2\" (click)=deleteSubItemMulti(subItem) title=\"Delete Sub-Item\"></i>\n                                <i *ngIf = \"item.isDone==false && subItem.isDone==false\" class=\"fa fa-pencil edit1\"  data-toggle=\"modal\" data-target=\"#myModal4\" (click)=\"setSubItemName(subItem.subItemId,subItem.subItemName)\"  (click)=\"saveSubItemUpdateHistory(subItem)\" title=\"Edit Sub-Item\"></i>\n                            </p>\n                        </div>\n                    </div>\n\n\n                </div>                  \n                \n\n\n            </div>\n        </div>\n        <!--end task menu-->\n\n    </div>\n</div>"
+module.exports = "<div class=\"container-fluid\">\r\n    <div class=\"col-12 header\">\r\n        <h1>To-Do List Application</h1>\r\n    </div>\r\n\r\n    <!--Nav Bar-->\r\n    <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\r\n        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\"\r\n            aria-label=\"Toggle navigation\">\r\n            <span class=\"navbar-toggler-icon\"></span>\r\n        </button>\r\n        <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\r\n            <ul class=\"navbar-nav\">\r\n                <li class=\"nav-item\">\r\n                    <b><a class=\"nav-link\" [routerLink]=\"['/todo-list']\">Single-User</a></b>\r\n                </li>\r\n                <li class=\"nav-item active\">\r\n                    <b><a class=\"nav-link\">Multi-User</a></b>\r\n                </li>\r\n                <li class=\"nav-item\">\r\n                        <b><a class=\"nav-link\" data-toggle=\"modal\" data-target=\"#friend-list\" >Friends</a></b>\r\n                </li>\r\n                <li class=\"nav-item\">\r\n                    <b><a class=\"nav-link\" (click)=logout()>Logout</a></b>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </nav>\r\n    <!--End Nav Bar-->\r\n\r\n\r\n    <!-- friends Modal-->\r\n\r\n\r\n    <div id=\"friend-list\" class=\"modal fade\" role=\"dialog\">\r\n            <div class=\"modal-dialog\">\r\n                <div class=\"modal-content\">\r\n                    <div class=\"modal-header\">\r\n                        <h4 class=\"modal-title\">Friend-List</h4>\r\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\">\r\n                            &times;\r\n                        </button>\r\n                    </div>\r\n                    <div class=\"modal-body\">\r\n                        <div class=\"container-fluid\">\r\n                            <div class=\"row\">\r\n                                <div class=\"col-12\">\r\n                                    <h5>All Users:</h5>\r\n                                    <div *ngFor=\"let user of users1\">\r\n                                        <p *ngIf=\"userId!=user.userId\">\r\n                                            <li class=\"list\">{{user.firstName}} {{user.lastName}}</li>\r\n                                            <button style=\"margin-left:1%; color: white;\" class=\"btn btn-secondary\" (click)=sendreq(user.userId)>Request</button>\r\n                                        </p>\r\n                                    </div>\r\n                                    <h5>Requests:</h5>\r\n                                    <div *ngFor=\"let user of users1\">\r\n                                        <div *ngFor=\"let req of user.requests\" >\r\n                                            <p *ngIf=\"userId==req.receiverId\">\r\n                                                <li class=\"list\">{{req.senderName}}</li>\r\n                                                <button style=\"margin:0 1%;\" class=\"btn btn-success\" (click)=acceptReq(req.senderId,req.senderName)>Accept</button>\r\n                                                <button class=\"btn btn-danger\" (click)=rejectReq(req.senderId)>Reject</button>\r\n                                            </p>\r\n                                        </div>\r\n                                    </div>\r\n                                    <h5>Friends:</h5>\r\n                                    <div *ngFor=\"let user of users1\">\r\n                                        <div *ngIf=\"userId==user.userId\">\r\n                                            <p *ngFor=\"let frnd of user.friends\">\r\n                                                <li class=\"list\" style=\"font-size:1.1em\"> {{frnd.friendName}}\r\n                                                </li>\r\n                                                <i (click)=deletefriend(frnd.friendId) style=\"margin-left:2%\" class=\"fa fa-trash-o\"></i>\r\n                                            </p>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n    </div>\r\n    \r\n    <!--End Friends Modal-->\r\n\r\n    <!-- Modal for adding a new public list-->\r\n    <div id=\"myModal\" class=\"modal fade\" role=\"dialog\">\r\n        <div class=\"modal-dialog\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <h4 class=\"modal-title\">Add New Public To-Do List</h4>\r\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\">\r\n                        &times;\r\n                    </button>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                    <form class=\"form-group\">\r\n                        <label for=\"input\">\r\n                            Name:\r\n                        </label>\r\n                        <input [(ngModel)]=\"listName1\" name=\"name\" class=\"form-control\" placeholder=\"Enter Name\" type=\"text\" />\r\n                    </form>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                    <button class=\"btn btn-md text-white bg-success\" data-dismiss=\"modal\" (click)=\"newTodoListMulti()\">Save</button>\r\n                    <button class=\"btn btn-md text-white bg-danger\" data-dismiss=\"modal\">Close</button>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <!--End add public list modal-->\r\n\r\n    <!-- Modal for updating a public list -->\r\n    <div id=\"myModal1\" class=\"modal fade\" role=\"dialog\">\r\n        <div class=\"modal-dialog\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <h4 class=\"modal-title\">Edit List</h4>\r\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\">\r\n                        &times;\r\n                    </button>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                    <form class=\"form-group\">\r\n                        <label for=\"input\">\r\n                            List Name:\r\n                        </label>\r\n\r\n                        <input [(ngModel)]=\"listName\" name=\"name\" class=\"form-control\" placeholder=\"Edit Name\" type=\"text\" />\r\n\r\n\r\n                    </form>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                    <button class=\"btn btn-md text-white bg-success\" data-dismiss=\"modal\" (click)=\"updatetodoListMulti()\">Save</button>\r\n                    <button class=\"btn btn-md text-white bg-danger\" data-dismiss=\"modal\">Close</button>\r\n                </div>\r\n\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <!--End update public list modal-->\r\n\r\n    <!-- Modal for updating a public item -->\r\n    <div id=\"myModal2\" class=\"modal fade\" role=\"dialog\">\r\n            <div class=\"modal-dialog\">\r\n                <div class=\"modal-content\">\r\n                    <div class=\"modal-header\">\r\n                        <h4 class=\"modal-title\">Edit Item</h4>\r\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\">\r\n                            &times;\r\n                        </button>\r\n                    </div>\r\n                    <div class=\"modal-body\">\r\n                        <form class=\"form-group\">\r\n                            <label for=\"input\">\r\n                                Item Name:\r\n                            </label>\r\n    \r\n                            <input [(ngModel)]=\"itemName\" name=\"name\" class=\"form-control\" placeholder=\"Edit Item Name\" type=\"text\" />\r\n    \r\n    \r\n                        </form>\r\n                    </div>\r\n                    <div class=\"modal-footer\">\r\n                        <button class=\"btn btn-md text-white bg-success\" data-dismiss=\"modal\" (click)=\"updateItemMulti()\">Save</button>\r\n                        <button class=\"btn btn-md text-white bg-danger\" data-dismiss=\"modal\">Close</button>\r\n                    </div>\r\n    \r\n                </div>\r\n            </div>\r\n    </div>\r\n\r\n    <!--End update public item modal-->\r\n\r\n    <!-- Modal for adding a new public sub-item-->\r\n    <div id=\"myModal3\" class=\"modal fade\" role=\"dialog\">\r\n            <div class=\"modal-dialog\">\r\n                <div class=\"modal-content\">\r\n                    <div class=\"modal-header\">\r\n                        <h4 class=\"modal-title\">Add a Sub-Item to Item</h4>\r\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\">\r\n                            &times;\r\n                        </button>\r\n                    </div>\r\n                    <div class=\"modal-body\">\r\n                        <form class=\"form-group\">\r\n                            <label for=\"input\">\r\n                                Sub-Item Name:\r\n                            </label>\r\n    \r\n                            <input [(ngModel)]=\"subItemName1\" name=\"name\" class=\"form-control\" placeholder=\"Enter Sub-Item Name\" type=\"text\" />\r\n    \r\n    \r\n                        </form>\r\n                    </div>\r\n                    <div class=\"modal-footer\">\r\n                        <button class=\"btn btn-md text-white bg-success\" data-dismiss=\"modal\" (click)=\"createSubItemMulti()\">Save</button>\r\n                        <button class=\"btn btn-md text-white bg-danger\" data-dismiss=\"modal\">Close</button>\r\n                    </div>\r\n    \r\n                </div>\r\n            </div>\r\n    </div>\r\n    <!--End add public item modal-->\r\n\r\n    <!-- Modal for updating a new public sub-item-->\r\n    <div id=\"myModal4\" class=\"modal fade\" role=\"dialog\">\r\n            <div class=\"modal-dialog\">\r\n                <div class=\"modal-content\">\r\n                    <div class=\"modal-header\">\r\n                        <h4 class=\"modal-title\">Edit Sub-Item</h4>\r\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\">\r\n                            &times;\r\n                        </button>\r\n                    </div>\r\n                    <div class=\"modal-body\">\r\n                        <form class=\"form-group\">\r\n                            <label for=\"input\">\r\n                                Sub-Item Name:\r\n                            </label>\r\n    \r\n                            <input [(ngModel)]=\"subItemName\" name=\"name\" class=\"form-control\" placeholder=\"Edit Sub-Item Name\" type=\"text\" />\r\n            \r\n                        </form>\r\n                    </div>\r\n                    <div class=\"modal-footer\">\r\n                        <button class=\"btn btn-md text-white bg-success\" data-dismiss=\"modal\" (click)=\"updateSubItemMulti()\">Save</button>\r\n                        <button class=\"btn btn-md text-white bg-danger\" data-dismiss=\"modal\">Close</button>\r\n                    </div>\r\n    \r\n                </div>\r\n            </div>\r\n    </div>\r\n    <!--End updating public item modal-->\r\n\r\n\r\n\r\n\r\n    <div class=\"row\">\r\n\r\n        <!--aside-->\r\n\r\n        <div class=\"col-md-3 aside\">\r\n          \r\n            <span class=\"user\">\r\n              <b> Welcome! {{userName}} </b><br>\r\n              <small style=\"font-weight:bold;\">Multi User Platform</small>\r\n            </span>\r\n\r\n            <div>\r\n                <i class=\"fa fa-plus-square addicon\" data-toggle=\"modal\" data-target=\"#myModal\" title=\"Add List\"></i>\r\n            </div>\r\n            <h6 class=\"online\">All Online Users</h6>\r\n            <div class=\"on-users\" *ngFor=\"let user of users\">\r\n                    <p *ngIf=\"user.userId!=userId\">\r\n                        <i class=\"fa fa-user onicon\"></i>\r\n                        <strong>{{user.fullName}}</strong>\r\n                    </p>\r\n            </div>\r\n\r\n            \r\n            <h6 class=\"friends\">My Friends</h6>\r\n            <div class=\"on-users\" *ngFor=\"let user of users1\">\r\n                <div *ngIf=\"userId==user.userId\">\r\n                    <p class=\"lists\" *ngFor=\"let frnd of user.friends\">\r\n                        <i class=\"fa fa-user onicon\"></i>\r\n                        <strong>{{frnd.friendName}}</strong>   \r\n                        <i (click)=deletefriend(frnd.friendId) style=\"margin-left:2%\" class=\"fa fa-trash-o trash1\" title=\"Unfriend\"></i>\r\n                    </p>\r\n                </div>\r\n            </div>\r\n\r\n            <hr>\r\n\r\n            <h6 class=\"listBar\">Lists</h6>\r\n            <div *ngFor=\"let list of response\">\r\n                <div *ngIf=\"list.private==false\">\r\n                    <p class=\"lists\">\r\n                        <span (click)=selectlist(list.listId,list.listName)>\r\n                            <i class=\"fa fa-list-alt\"></i> {{list.listName}}\r\n                        </span>\r\n                        <i class=\"fa fa-trash-o trash1\" (click)=deletetodoListMulti(list.listId) title=\"Delete\"></i>\r\n                        <i class=\"fa fa-edit edit1\" title=\"Edit\"  data-toggle=\"modal\" data-target=\"#myModal1\" (click)=\"setListName(list.listId,list.listName)\"></i>\r\n                    </p>\r\n\r\n                    <br>\r\n                    <small style=\"font-weight:bold\" class=\"text-muted\">\r\n                        <i class=\"fa fa-user\"></i> Created By: {{list.creator}} </small>\r\n                    <hr>\r\n                </div>\r\n\r\n            </div>\r\n\r\n\r\n\r\n        </div>\r\n\r\n        <!-- Main task menu -->\r\n\r\n        <div class=\"col-md-9 maintask\">\r\n            <div class=\"input\">\r\n                <input [(ngModel)]=\"itemName\" name=\"item\" style=\"width:75%; display:inline-block\" class=\"textfield\" type=\"text\" placeholder=\"Enter New Item\"\r\n                (keydown)=\"addItemUsingKeypress($event)\">\r\n                <i (click)=createItemMulti() class=\"fa fa-plus-square square2\" title=\"Add Item\"></i>\r\n                <i (click)=\"clearUndos()\" class=\"fa fa-minus-circle square2\" title=\"Clear All Undos\"></i>\r\n            </div>\r\n\r\n            <div *ngIf=\"!listName\" class=\"col-sm blankContent\">\r\n                Click on List to schedule your task !!!\r\n            </div>\r\n\r\n\r\n            <div class=\"listname\">{{listName}} <span (click)=\"undoItem(listId)\" style=\"float:right; padding-right:2em\"><i class=\"fa fa-undo fa-lg\" style=\"cursor:pointer;\" title=\"Undo Item\"></i></span></div>\r\n            <div class=\"tasklist\">\r\n\r\n                <div *ngFor=\"let item of itemData\">\r\n                    <div class=\"itemName\"  *ngIf=\"item.listId==listId\">\r\n                        \r\n                        <input type=\"checkbox\" *ngIf = \"item.isDone==false\" (click)=markDoneItemMulti(item.itemId) title=\"Click to Mark Done\">\r\n                        <i class=\"fa fa-check-circle\" style=\"color:darkgreen\"  *ngIf = \"item.isDone==true\" (click)=markOpenItemMulti(item.itemId)  title=\"Click to Open Again\"></i>\r\n                        {{item.itemName}}\r\n                        <i *ngIf = \"item.isDone==false\" (click)=\"undoSubItem(itemId)\" class=\"fa fa-undo undoSub\" style=\"float :right\" title=\"Undo SubItem\"></i>\r\n                        <i *ngIf = \"item.isDone==false\" class=\"fa fa-trash-o trash2\" (click)=deleteItemMulti(item) title=\"Delete Item\"></i>\r\n                        <i *ngIf = \"item.isDone==false\" class=\"fa fa-pencil edit1\" data-toggle=\"modal\" data-target=\"#myModal2\" (click)=\"setItemName(item.itemId,item.itemName)\" (click)=\"saveItemUpdateHistory(item)\" title=\"Edit Item\"></i>\r\n                        <i *ngIf = \"item.isDone==false\" class=\"fa fa-plus-square squareItem\" title=\"Add SubItem\" data-toggle=\"modal\" data-target=\"#myModal3\" (click)=\"addSubItemIcon(item.itemId)\"></i>\r\n\r\n                    </div>\r\n\r\n                    <br>                        \r\n                        <!-- Sub-Items -->\r\n                    <div class=\"leftMargin\" *ngIf=\"item.listId==listId\">\r\n                        <div *ngFor=\"let subItem of response1\">\r\n                            <p class=\"subItemName\" *ngIf=\"subItem.itemId==item.itemId\">\r\n                                <input type=\"checkbox\" *ngIf = \"item.isDone==false && subItem.isDone==false\"  (click)=markDoneSubItemMulti(subItem.subItemId) title=\"Click to Mark Done\">\r\n                                <i class=\"fa fa-check-circle\" *ngIf = \"item.isDone==false && subItem.isDone==true\" style=\"color:darkgreen\" (click)=markOpenSubItemMulti(subItem.subItemId) title=\"Click to Mark Open\"></i>\r\n                                {{subItem.subItemName}}\r\n                                <i *ngIf = \"item.isDone==false && subItem.isDone==false\" class=\"fa fa-trash-o trash2\" (click)=deleteSubItemMulti(subItem) title=\"Delete Sub-Item\"></i>\r\n                                <i *ngIf = \"item.isDone==false && subItem.isDone==false\" class=\"fa fa-pencil edit1\"  data-toggle=\"modal\" data-target=\"#myModal4\" (click)=\"setSubItemName(subItem.subItemId,subItem.subItemName)\"  (click)=\"saveSubItemUpdateHistory(subItem)\" title=\"Edit Sub-Item\"></i>\r\n                            </p>\r\n                        </div>\r\n                    </div>\r\n\r\n\r\n                </div>                  \r\n                \r\n\r\n\r\n            </div>\r\n        </div>\r\n        <!--end task menu-->\r\n\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -2599,87 +2588,6 @@ var TodoModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/user/email-verify/email-verify.component.css":
-/*!**************************************************************!*\
-  !*** ./src/app/user/email-verify/email-verify.component.css ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/user/email-verify/email-verify.component.html":
-/*!***************************************************************!*\
-  !*** ./src/app/user/email-verify/email-verify.component.html ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container\">\n  <div *ngIf=\"success==1\">\n    <div class=\"row mt-5\">\n\n    </div>\n    <div class=\"row mt-4\">\n      <div class=\"col-12 text-center\">\n        <h2 class=\"text-success\">\n          <i class=\"fa fa-check-circle\"></i>Email Verified!</h2>\n        <h5 class=\"text-danger\">Thanks for signing up in TO-DO Application. Please\n          <a [routerLink]=\"['/login']\">Login</a>\n        </h5>\n      </div>\n    </div>\n  </div>\n  <!--success end-->\n  <!---failure start-->\n  <div *ngIf=\"failure==1\">\n    <div class=\"row mt-5\">\n\n    </div>\n    <div class=\"row mt-4\">\n      <div class=\"col-12 text-center\">\n        <h2 class=\"text-danger\">\n          <i class=\"fa fa-times-circle\"></i>Email Not Verified!</h2>\n        <h5 class=\"text-danger\">Oops!Some Error Occured!.Please again\n          <a [routerLink]=\"['/signup']\">SignUp</a>\n        </h5>\n      </div>\n    </div>\n\n  </div>\n  <!-- failure end -->\n</div>"
-
-/***/ }),
-
-/***/ "./src/app/user/email-verify/email-verify.component.ts":
-/*!*************************************************************!*\
-  !*** ./src/app/user/email-verify/email-verify.component.ts ***!
-  \*************************************************************/
-/*! exports provided: EmailVerifyComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EmailVerifyComponent", function() { return EmailVerifyComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../app.service */ "./src/app/app.service.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var EmailVerifyComponent = /** @class */ (function () {
-    function EmailVerifyComponent(route, router, appService) {
-        this.route = route;
-        this.router = router;
-        this.appService = appService;
-    }
-    EmailVerifyComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.data = this.route.snapshot.paramMap.get('userId');
-        this.appService.verifyEmail(this.data).subscribe(function (Response) {
-            if (Response.status === 200) {
-                _this.success = 1;
-            }
-            else {
-                _this.failure = 1;
-            }
-        }, function (error) {
-        });
-    };
-    EmailVerifyComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-email-verify',
-            template: __webpack_require__(/*! ./email-verify.component.html */ "./src/app/user/email-verify/email-verify.component.html"),
-            styles: [__webpack_require__(/*! ./email-verify.component.css */ "./src/app/user/email-verify/email-verify.component.css")]
-        }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _app_service__WEBPACK_IMPORTED_MODULE_2__["AppService"]])
-    ], EmailVerifyComponent);
-    return EmailVerifyComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/user/forgot-password/forgot-password.component.css":
 /*!********************************************************************!*\
   !*** ./src/app/user/forgot-password/forgot-password.component.css ***!
@@ -2698,7 +2606,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\n\n  <a class=\"navbar-brand\" href=\"/\">TO-DO App</a>\n\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\"\n    aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n\n    <span class=\"navbar-toggler-icon\"></span>\n\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n\n    <ul class=\"navbar-nav\">\n\n      <li class=\"nav-item\">\n\n        <a class=\"nav-link\" (click)=\"goToSignUp()\">Signup</a>\n\n      </li>\n\n    </ul>\n\n  </div>\n\n</nav>\n\n<div class=\"row p-0 m-0\">\n\n  <div class=\"col-sm\"></div>\n\n  <div class=\"col-sm p-5\">\n\n    <h2 class=\"form-signin-heading\">Email Address</h2>\n\n    <label for=\"inputEmail\" class=\"sr-only\">Email address</label>\n\n    <input type=\"email\" id=\"inputEmail\" class=\"form-control\" [(ngModel)]=\"email\" placeholder=\"Email address\" required autofocus>\n\n    <br>\n\n    <button class=\"btn btn-lg btn-primary btn-block\" type=\"button\" (click)=\"sendResetLinkFunction()\">Send Reset Link</button>\n\n  </div>\n\n  <div class=\"col-sm\"></div>\n\n</div>"
+module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\r\n\r\n  <a class=\"navbar-brand\" href=\"/\">TO-DO App</a>\r\n\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\"\r\n    aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n\r\n  </button>\r\n\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n\r\n    <ul class=\"navbar-nav\">\r\n\r\n      <li class=\"nav-item\">\r\n\r\n        <a class=\"nav-link\" (click)=\"goToSignUp()\">Signup</a>\r\n\r\n      </li>\r\n\r\n    </ul>\r\n\r\n  </div>\r\n\r\n</nav>\r\n\r\n<div class=\"row p-0 m-0\">\r\n\r\n  <div class=\"col-sm\"></div>\r\n\r\n  <div class=\"col-sm p-5\">\r\n\r\n    <h2 class=\"form-signin-heading\">Email Address</h2>\r\n\r\n    <label for=\"inputEmail\" class=\"sr-only\">Email address</label>\r\n\r\n    <input type=\"email\" id=\"inputEmail\" class=\"form-control\" [(ngModel)]=\"email\" placeholder=\"Email address\" required autofocus>\r\n\r\n    <br>\r\n\r\n    <button class=\"btn btn-lg btn-primary btn-block\" type=\"button\" (click)=\"sendResetLinkFunction()\">Send Reset Link</button>\r\n\r\n  </div>\r\n\r\n  <div class=\"col-sm\"></div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -2800,7 +2708,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\n\n  <a class=\"navbar-brand\" href=\"/\">TO-DO List Application</a>\n\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\"\n    aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n\n    <span class=\"navbar-toggler-icon\"></span>\n\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n\n    <ul class=\"navbar-nav\">\n\n      <li class=\"nav-item\">\n\n        <a class=\"nav-link\" style=\"cursor: pointer\" (click) = \"goToSignUp()\" >SignUp</a>\n\n      </li>\n\n    </ul>\n\n  </div>\n\n</nav>\n\n<div class=\"row p-0 m-0\">\n\n  <div class=\"col-sm\"></div>\n\n  <div class=\"col-sm p-5\">\n\n    <h2 class=\"form-signin-heading\">Please sign in</h2>\n\n    <label for=\"inputEmail\" class=\"sr-only\">Email address</label>\n\n    <input type=\"email\" id=\"inputEmail\" class=\"form-control\" [(ngModel)]=\"email\" placeholder=\"Email address\" required autofocus>\n\n    <br>\n\n    <label for=\"inputPassword\" class=\"sr-only\">Password</label>\n\n    <input type=\"password\" id=\"inputPassword\" class=\"form-control\" [(ngModel)]=\"password\" placeholder=\"Password\"  (keydown)=\"doLoginUsingKeypress($event)\" required>\n\n    <br>\n\n\n    <a [routerLink]=\"['/forgot-password']\">Forgot Password ?</a>\n\n    <br><br>\n\n\n    <button class=\"btn btn-lg btn-primary btn-block\" type=\"button\" (click) = \"signinFunction()\" >Sign in</button>\n\n  </div>\n\n  <div class=\"col-sm\"></div>\n\n</div>\n"
+module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\r\n\r\n  <a class=\"navbar-brand\" href=\"/\">TO-DO List Application</a>\r\n\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\"\r\n    aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n\r\n  </button>\r\n\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n\r\n    <ul class=\"navbar-nav\">\r\n\r\n      <li class=\"nav-item\">\r\n\r\n        <a class=\"nav-link\" style=\"cursor: pointer\" (click) = \"goToSignUp()\" >SignUp</a>\r\n\r\n      </li>\r\n\r\n    </ul>\r\n\r\n  </div>\r\n\r\n</nav>\r\n\r\n<div class=\"row p-0 m-0\">\r\n\r\n  <div class=\"col-sm\"></div>\r\n\r\n  <div class=\"col-sm p-5\">\r\n\r\n    <h2 class=\"form-signin-heading\">Please sign in</h2>\r\n\r\n    <label for=\"inputEmail\" class=\"sr-only\">Email address</label>\r\n\r\n    <input type=\"email\" id=\"inputEmail\" class=\"form-control\" [(ngModel)]=\"email\" placeholder=\"Email address\" required autofocus>\r\n\r\n    <br>\r\n\r\n    <label for=\"inputPassword\" class=\"sr-only\">Password</label>\r\n\r\n    <input type=\"password\" id=\"inputPassword\" class=\"form-control\" [(ngModel)]=\"password\" placeholder=\"Password\"  (keydown)=\"doLoginUsingKeypress($event)\" required>\r\n\r\n    <br>\r\n\r\n\r\n    <a [routerLink]=\"['/forgot-password']\">Forgot Password ?</a>\r\n\r\n    <br><br>\r\n\r\n\r\n    <button class=\"btn btn-lg btn-primary btn-block\" type=\"button\" (click) = \"signinFunction()\" >Sign in</button>\r\n\r\n  </div>\r\n\r\n  <div class=\"col-sm\"></div>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -2820,8 +2728,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(ng2_cookies_ng2_cookies__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _app_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../app.service */ "./src/app/app.service.ts");
 /* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
-/* harmony import */ var ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ng4-loading-spinner */ "./node_modules/ng4-loading-spinner/ng4-loading-spinner.umd.js");
-/* harmony import */ var ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_5__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2838,14 +2744,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 //import for toastr
 
 //for loading spinner
-
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(appService, router, toastr, spinnerService) {
+    function LoginComponent(appService, router, toastr) {
         var _this = this;
         this.appService = appService;
         this.router = router;
         this.toastr = toastr;
-        this.spinnerService = spinnerService;
         this.goToSignUp = function () {
             _this.router.navigate(['/signup']);
         }; // end goToSignUp
@@ -2861,7 +2765,6 @@ var LoginComponent = /** @class */ (function () {
                     email: _this.email,
                     password: _this.password
                 };
-                _this.spinnerService.show();
                 _this.appService.signinFunction(data)
                     .subscribe(function (apiResponse) {
                     console.log(apiResponse);
@@ -2872,38 +2775,32 @@ var LoginComponent = /** @class */ (function () {
                         _this.appService.setUserInfoInLocalStorage(apiResponse.data.userDetails);
                         //   this.router.navigate(['/']);
                         setTimeout(function () {
-                            _this.spinnerService.hide();
                             _this.router.navigate(['/todo-list']);
                         }, 1000);
                     }
                     else {
                         setTimeout(function () {
-                            _this.spinnerService.hide();
                             _this.toastr.error(apiResponse.message);
                         }, 1000);
                     }
                 }, function (err) {
                     if (err.status == 404) {
                         setTimeout(function () {
-                            _this.spinnerService.hide();
                             _this.router.navigate(['/page-not-found']);
                         }, 1000);
                     }
                     else if (err.status == 500) {
                         setTimeout(function () {
-                            _this.spinnerService.hide();
                             _this.router.navigate(['/server-error']);
                         }, 1000);
                     }
                     else if (err.status == 400) {
                         setTimeout(function () {
-                            _this.spinnerService.hide();
                             _this.toastr.error('Password incorrect');
                         });
                     }
                     else {
                         setTimeout(function () {
-                            _this.spinnerService.hide();
                             _this.router.navigate(['/signup']);
                             _this.toastr.error('Please, create account');
                         });
@@ -2927,123 +2824,9 @@ var LoginComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_app_service__WEBPACK_IMPORTED_MODULE_3__["AppService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"],
-            ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_5__["Ng4LoadingSpinnerService"]])
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"]])
     ], LoginComponent);
     return LoginComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/user/reset-password/reset-password.component.css":
-/*!******************************************************************!*\
-  !*** ./src/app/user/reset-password/reset-password.component.css ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/user/reset-password/reset-password.component.html":
-/*!*******************************************************************!*\
-  !*** ./src/app/user/reset-password/reset-password.component.html ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\n\n  <a class=\"navbar-brand\" href=\"/\">TO-DO App</a>\n\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\"\n    aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n\n    <span class=\"navbar-toggler-icon\"></span>\n\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n\n    <ul class=\"navbar-nav\">\n\n      <li class=\"nav-item\">\n\n        <a class=\"nav-link\" (click)=\"goToSignUp()\">Sign-Up</a>\n\n      </li>\n\n    </ul>\n\n  </div>\n\n</nav>\n\n<div class=\"row p-0 m-0\">\n\n  <div class=\"col-sm\"></div>\n\n  <div class=\"col-sm p-5\">\n\n    <h2 class=\"form-signin-heading\">Password Reset</h2>\n\n    <label for=\"inputPassword\" class=\"sr-only\">Password</label>\n\n    <input type=\"password\" id=\"inputPassword\" class=\"form-control\" [(ngModel)]=\"password\" placeholder=\"Password\" required>\n\n    <br>\n\n    <label for=\"inputPassword\" class=\"sr-only\">Confirm Password</label>\n\n    <input type=\"password\" id=\"inputPassword1\" class=\"form-control\" [(ngModel)]=\"confirmPassword\" placeholder=\"Confirm Password\" required>\n\n    <br>\n\n    <button class=\"btn btn-lg btn-primary btn-block\" type=\"button\" (click)=\"resetPassword()\">Change Password</button>\n\n  </div>\n\n  <div class=\"col-sm\"></div>\n\n</div>"
-
-/***/ }),
-
-/***/ "./src/app/user/reset-password/reset-password.component.ts":
-/*!*****************************************************************!*\
-  !*** ./src/app/user/reset-password/reset-password.component.ts ***!
-  \*****************************************************************/
-/*! exports provided: ResetPasswordComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ResetPasswordComponent", function() { return ResetPasswordComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
-/* harmony import */ var _app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../app.service */ "./src/app/app.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-//import for toastr
-
-//for Service
-
-//for routing
-
-var ResetPasswordComponent = /** @class */ (function () {
-    function ResetPasswordComponent(appService, _route, router, toastr) {
-        var _this = this;
-        this.appService = appService;
-        this._route = _route;
-        this.router = router;
-        this.toastr = toastr;
-        this.userId = this._route.snapshot.paramMap.get('userId');
-        this.data = {};
-        this.resetPassword = function () {
-            if (_this.matchPassword()) {
-                _this.data.userId = _this.userId;
-                _this.data.password = _this.password;
-                _this.appService.resetPassword(_this.data)
-                    .subscribe(function (apiResponse) {
-                    if (apiResponse.status == 200) {
-                        _this.toastr.success("Password Reset Succesfull", "Success!");
-                        setTimeout(function () {
-                            _this.router.navigate(['/']);
-                        }, 2000);
-                    }
-                    else {
-                        _this.toastr.error(apiResponse.message, "Error!");
-                    }
-                }, function (error) {
-                    _this.toastr.error("Some Error Occurred", "Error!");
-                });
-            }
-            else {
-                _this.toastr.error("Password Mismatch", "Error!");
-            }
-        };
-        this.matchPassword = function () {
-            if (_this.password === _this.confirmPassword) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }; //end matchPassword
-    }
-    ResetPasswordComponent.prototype.ngOnInit = function () {
-    };
-    ResetPasswordComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-reset-password',
-            template: __webpack_require__(/*! ./reset-password.component.html */ "./src/app/user/reset-password/reset-password.component.html"),
-            styles: [__webpack_require__(/*! ./reset-password.component.css */ "./src/app/user/reset-password/reset-password.component.css")]
-        }),
-        __metadata("design:paramtypes", [_app_service__WEBPACK_IMPORTED_MODULE_2__["AppService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_1__["ToastrService"]])
-    ], ResetPasswordComponent);
-    return ResetPasswordComponent;
 }());
 
 
@@ -3068,7 +2851,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\n\n  <a class=\"navbar-brand\" href=\"/\">TO-DO List Application</a>\n\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\"\n    aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n\n    <span class=\"navbar-toggler-icon\"></span>\n\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n\n    <ul class=\"navbar-nav mr-auto\">\n\n      <li class=\"nav-item\">\n\n        <a class=\"nav-link\" style=\"cursor: pointer\" (click)=\"goToSignIn()\">SignIn</a>\n\n      </li>\n\n    </ul>\n\n  </div>\n\n</nav>\n\n<div class=\"row p-0 m-0\">\n\n  <div class=\"col-sm\"></div>\n\n  <div class=\"col-sm p-5\">\n\n    <h2 class=\"form-signin-heading\">Sign Up To Create your TO-DO List</h2>\n\n    <br>\n\n    <span>FirstName: </span>\n\n    <label for=\"inputFirstName\" class=\"sr-only\">FirstName</label>\n\n    <input type=\"text\" #first=\"ngModel\" pattern=\"^[A-Z][A-za-z ]+$\" minlength=\"2\" id=\"inputFirstName\" class=\"form-control\" [(ngModel)]=\"firstName\" placeholder=\"FirstName\" required autofocus>\n\n    <br>\n    <div [hidden]=\"first.pristine || first.valid\" class=\"alert alert-danger\">\n      <div *ngIf=\"first.errors?.pattern\">\n        Warning : Please tart with Capital and contain only letters !\n            <div *ngIf=\"first.errors?.minlength\">\n              Warning : Minimum 2 letters required!\n            </div>\n      </div>\n      <div *ngIf=\"first.errors?.required\">\n        Warning : First Name is required!\n      </div>\n\n    </div>\n\n\n\n    <span>LastName: </span>\n\n    <label for=\"inputLastName\" class=\"sr-only\">LastName</label>\n\n    <input type=\"text\" #last=\"ngModel\" pattern=\"^[A-Z][A-za-z ]+$\" minlength=\"2\" id=\"inputLastName\" class=\"form-control\" [(ngModel)]=\"lastName\" placeholder=\"LastName\" required>\n\n    <br>\n\n    <div [hidden]=\"last.pristine || last.valid\" class=\"alert alert-danger\">\n      <div *ngIf=\"last.errors?.pattern\">\n        Warning : Please tart with Capital and contain only letters !\n        <div *ngIf=\"last.errors?.minlength\">\n          Warning : Minimum 2 letters required!\n        </div>\n      </div>\n      <div *ngIf=\"last.errors?.required\">\n        Warning : Last Name is required!\n      </div>\n\n    </div>\n<!--\n    <span>Mobile: </span>\n\n    <label for=\"inputMobile\" class=\"sr-only\">Mobile</label>\n\n    <input type=\"number\" id=\"inputMobileNumber\" class=\"form-control\" [(ngModel)]=\"mobileNumber\" placeholder=\"Mobile Number\" required>\n-->\n\n    <span>Email: </span>\n\n    <label for=\"inputEmail\" class=\"sr-only\">Email address</label>\n\n    <input type=\"email\" #emailId=\"ngModel\" pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$\" id=\"inputEmail\" class=\"form-control\" [(ngModel)]=\"email\" placeholder=\"Email address\" required>\n\n    <br>\n    <div [hidden]=\"emailId.valid || emailId.pristine\" class=\"alert alert-danger\">\n      <div *ngIf=\"emailId.errors?.pattern\">\n       Warning : Email is invalid!\n\n      </div>\n      <div *ngIf=\"emailId.errors?.required\">\n       Warning : Email is required!\n      </div>\n    </div>\n\n    <span>Password: </span>\n\n    <label for=\"inputPassword\" class=\"sr-only\">Password</label>\n\n    <input type=\"password\" #pass=\"ngModel\" pattern=\"(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}\" id=\"inputPassword\" class=\"form-control\" [(ngModel)]=\"password\" placeholder=\"Password\" required>\n\n    <br>\n    <div [hidden]=\"pass.valid || pass.pristine\" class=\"alert alert-danger\">\n      <div *ngIf=\"pass.errors?.pattern\">\n       Warning : Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters!\n      </div>\n      <div *ngIf=\"pass.errors?.required\">\n       Warning : Password is required!\n      </div>\n    </div>\n\n\n    <span class=\"sub-heading\">Confirm Password: </span>\n\n    <label for=\"inputConPassword\" class=\"sr-only\">Confirm Password</label>\n\n    <input type=\"password\" #conPass=\"ngModel\"  id=\"inputConPassword\" class=\"form-control\" name=\"conPass\" [(ngModel)]=\"confirmPassword\"\n      placeholder=\"Confirm Password\" required>\n\n    <br>\n   \n    <div [hidden]=\"conPass.pristine || password==confirmPassword\" class=\"alert alert-danger\">\n       <div *ngIf=\"password!=confirmPassword\">\n          Warning : Password and Confirm Password does not match!\n       </div>\n      <div *ngIf=\"conPass.errors?.required\">\n          Warning: Confirm Password is required!\n      </div>\n    </div>\n\n    <span class=\"sub-heading\">Country: </span>\n\n    <label for=\"inputCountry\" class=\"sr-only\">Country</label>\n    \n    <select [(ngModel)]=\"countryName\" #Country=\"ngModel\"  name=\"countryName\" class=\"form-control\" \n    id=\"inputCountry\" (change)=\"onChange()\" required>\n       <option value=\"\" >Select</option>\n      <option *ngFor=\"let country of finalCountryList\" [value]=\"country.key\">{{country.value}}</option>\n    </select>\n      <br>\n      <div [hidden]=\"Country.valid || Country.pristine  \" class=\"alert alert-danger\">\n      ** Country Name is required \n      </div>\n    \n\n    <span class=\"sub-heading\">Mobile: </span>\n\n    <label for=\"inputMobile\" class=\"sr-only\">Mobile</label>\n    <div class=\"input-group\">\n        <div class=\"input-group-text\">+{{code}}</div>\n        <input type=\"number\" #mobileNum=\"ngModel\" pattern=\"^\\d{10}$\" id=\"inputMobile\" class=\"form-control\" name=\"mobile\" [(ngModel)]=\"mobile\"\n        placeholder=\"Mobile\" required>\n      </div>\n \n\n    <br>\n    <div [hidden]=\"mobileNum.valid || mobileNum.pristine\" class=\"alert alert-danger\">\n      <div *ngIf=\"mobileNum.errors?.pattern\">\n        Mobile Number should only start contain only 10 digits!\n\n      </div>\n      <div *ngIf=\"mobileNum.errors?.required\">\n        Mobile Number is required!\n      </div>\n    </div>\n\n\n\n    <button class=\"btn btn-lg btn-primary btn-block\" type=\"button\" (click)=\"signupFunction()\">Sign Up</button>\n\n  </div>\n\n  <div class=\"col-sm\"></div>\n\n</div>\n\n\n"
+module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\r\n\r\n  <a class=\"navbar-brand\" href=\"/\">TO-DO List Application</a>\r\n\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\"\r\n    aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n\r\n  </button>\r\n\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n\r\n    <ul class=\"navbar-nav mr-auto\">\r\n\r\n      <li class=\"nav-item\">\r\n\r\n        <a class=\"nav-link\" style=\"cursor: pointer\" (click)=\"goToSignIn()\">SignIn</a>\r\n\r\n      </li>\r\n\r\n    </ul>\r\n\r\n  </div>\r\n\r\n</nav>\r\n\r\n<div class=\"row p-0 m-0\">\r\n\r\n  <div class=\"col-sm\"></div>\r\n\r\n  <div class=\"col-sm p-5\">\r\n\r\n    <h2 class=\"form-signin-heading\">Sign Up To Create your TO-DO List</h2>\r\n\r\n    <br>\r\n\r\n    <span>FirstName: </span>\r\n\r\n    <label for=\"inputFirstName\" class=\"sr-only\">FirstName</label>\r\n\r\n    <input type=\"text\" #first=\"ngModel\" pattern=\"^[A-Z][A-za-z ]+$\" minlength=\"2\" id=\"inputFirstName\" class=\"form-control\" [(ngModel)]=\"firstName\" placeholder=\"FirstName\" required autofocus>\r\n\r\n    <br>\r\n    <div [hidden]=\"first.pristine || first.valid\" class=\"alert alert-danger\">\r\n      <div *ngIf=\"first.errors?.pattern\">\r\n        Warning : Please tart with Capital and contain only letters !\r\n            <div *ngIf=\"first.errors?.minlength\">\r\n              Warning : Minimum 2 letters required!\r\n            </div>\r\n      </div>\r\n      <div *ngIf=\"first.errors?.required\">\r\n        Warning : First Name is required!\r\n      </div>\r\n\r\n    </div>\r\n\r\n\r\n\r\n    <span>LastName: </span>\r\n\r\n    <label for=\"inputLastName\" class=\"sr-only\">LastName</label>\r\n\r\n    <input type=\"text\" #last=\"ngModel\" pattern=\"^[A-Z][A-za-z ]+$\" minlength=\"2\" id=\"inputLastName\" class=\"form-control\" [(ngModel)]=\"lastName\" placeholder=\"LastName\" required>\r\n\r\n    <br>\r\n\r\n    <div [hidden]=\"last.pristine || last.valid\" class=\"alert alert-danger\">\r\n      <div *ngIf=\"last.errors?.pattern\">\r\n        Warning : Please tart with Capital and contain only letters !\r\n        <div *ngIf=\"last.errors?.minlength\">\r\n          Warning : Minimum 2 letters required!\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"last.errors?.required\">\r\n        Warning : Last Name is required!\r\n      </div>\r\n\r\n    </div>\r\n<!--\r\n    <span>Mobile: </span>\r\n\r\n    <label for=\"inputMobile\" class=\"sr-only\">Mobile</label>\r\n\r\n    <input type=\"number\" id=\"inputMobileNumber\" class=\"form-control\" [(ngModel)]=\"mobileNumber\" placeholder=\"Mobile Number\" required>\r\n-->\r\n\r\n    <span>Email: </span>\r\n\r\n    <label for=\"inputEmail\" class=\"sr-only\">Email address</label>\r\n\r\n    <input type=\"email\" #emailId=\"ngModel\" pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$\" id=\"inputEmail\" class=\"form-control\" [(ngModel)]=\"email\" placeholder=\"Email address\" required>\r\n\r\n    <br>\r\n    <div [hidden]=\"emailId.valid || emailId.pristine\" class=\"alert alert-danger\">\r\n      <!--\r\n        <div *ngIf=\"emailId.errors?.pattern\">\r\n       Warning : Email is invalid!\r\n\r\n      </div>\r\n      -->\r\n      \r\n      <div *ngIf=\"emailId.errors?.required\">\r\n       Warning : Email is required!\r\n      </div>\r\n    </div>\r\n\r\n    <span>Password: </span>\r\n\r\n    <label for=\"inputPassword\" class=\"sr-only\">Password</label>\r\n\r\n    <input type=\"password\" #pass=\"ngModel\" pattern=\"(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}\" id=\"inputPassword\" class=\"form-control\" [(ngModel)]=\"password\" placeholder=\"Password\" required>\r\n\r\n    <br>\r\n    <div [hidden]=\"pass.valid || pass.pristine\" class=\"alert alert-danger\">\r\n      <div *ngIf=\"pass.errors?.pattern\">\r\n       Warning : Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters!\r\n      </div>\r\n      <div *ngIf=\"pass.errors?.required\">\r\n       Warning : Password is required!\r\n      </div>\r\n    </div>\r\n\r\n\r\n    <span class=\"sub-heading\">Confirm Password: </span>\r\n\r\n    <label for=\"inputConPassword\" class=\"sr-only\">Confirm Password</label>\r\n\r\n    <input type=\"password\" #conPass=\"ngModel\"  id=\"inputConPassword\" class=\"form-control\" name=\"conPass\" [(ngModel)]=\"confirmPassword\"\r\n      placeholder=\"Confirm Password\" required>\r\n\r\n    <br>\r\n   \r\n    <div [hidden]=\"conPass.pristine || password==confirmPassword\" class=\"alert alert-danger\">\r\n       <div *ngIf=\"password!=confirmPassword\">\r\n          Warning : Password and Confirm Password does not match!\r\n       </div>\r\n      <div *ngIf=\"conPass.errors?.required\">\r\n          Warning: Confirm Password is required!\r\n      </div>\r\n    </div>\r\n\r\n    <span class=\"sub-heading\">Country: </span>\r\n\r\n    <label for=\"inputCountry\" class=\"sr-only\">Country</label>\r\n    \r\n    <select [(ngModel)]=\"countryName\" #Country=\"ngModel\"  name=\"countryName\" class=\"form-control\" \r\n    id=\"inputCountry\" (change)=\"onChange()\" required>\r\n       <option value=\"\" >Select</option>\r\n      <option *ngFor=\"let country of finalCountryList\" [value]=\"country.key\">{{country.value}}</option>\r\n    </select>\r\n      <br>\r\n      <div [hidden]=\"Country.valid || Country.pristine  \" class=\"alert alert-danger\">\r\n      ** Country Name is required \r\n      </div>\r\n    \r\n\r\n    <span class=\"sub-heading\">Mobile: </span>\r\n\r\n    <label for=\"inputMobile\" class=\"sr-only\">Mobile</label>\r\n    <div class=\"input-group\">\r\n        <div class=\"input-group-text\">+{{code}}</div>\r\n        <input type=\"number\" #mobileNum=\"ngModel\" pattern=\"^\\d{10}$\" id=\"inputMobile\" class=\"form-control\" name=\"mobile\" [(ngModel)]=\"mobile\"\r\n        placeholder=\"Mobile\" required>\r\n      </div>\r\n \r\n\r\n    <br>\r\n    <div [hidden]=\"mobileNum.valid || mobileNum.pristine\" class=\"alert alert-danger\">\r\n      <div *ngIf=\"mobileNum.errors?.pattern\">\r\n        Mobile Number should only start contain only 10 digits!\r\n\r\n      </div>\r\n      <div *ngIf=\"mobileNum.errors?.required\">\r\n        Mobile Number is required!\r\n      </div>\r\n    </div>\r\n\r\n\r\n\r\n    <button class=\"btn btn-lg btn-primary btn-block\" type=\"button\" (click)=\"signupFunction()\">Sign Up</button>\r\n\r\n  </div>\r\n\r\n  <div class=\"col-sm\"></div>\r\n\r\n</div>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -3087,8 +2870,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _sort_countries_pipe__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../sort-countries.pipe */ "./src/app/sort-countries.pipe.ts");
 /* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
-/* harmony import */ var ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ng4-loading-spinner */ "./node_modules/ng4-loading-spinner/ng4-loading-spinner.umd.js");
-/* harmony import */ var ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_5__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3104,16 +2885,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 //import for toastr
 
-//for spinner loading
-
 var SignupComponent = /** @class */ (function () {
-    function SignupComponent(appService, router, toastr, sortCountries, spinnerService) {
+    function SignupComponent(appService, router, toastr, sortCountries) {
         var _this = this;
         this.appService = appService;
         this.router = router;
         this.toastr = toastr;
         this.sortCountries = sortCountries;
-        this.spinnerService = spinnerService;
         this.countryName = "";
         this.finalCountryList = [];
         this.codeList = [];
@@ -3145,35 +2923,28 @@ var SignupComponent = /** @class */ (function () {
                     mobileNumber: "+" + _this.code + "-" + _this.mobileNumber,
                     country: _this.countryName
                 };
-                _this.spinnerService.show();
                 _this.appService.signupFunction(data)
                     .subscribe(function (apiResponse) {
                     console.log(apiResponse);
                     if (apiResponse.status === 200) {
-                        _this.spinnerService.hide();
                         _this.toastr.success('Account Created');
-                        _this.toastr.warning('Check for Email ID confirmation mail!');
                         setTimeout(function () {
                             _this.goToSignIn();
                         }, 2000);
                     }
                     else if (apiResponse.status == 404) {
                         setTimeout(function () {
-                            _this.spinnerService.hide();
                             _this.router.navigate(['/page-not-found']);
                         }, 1000);
                     }
                     else if (apiResponse.status == 500) {
                         setTimeout(function () {
-                            _this.spinnerService.hide();
                             _this.router.navigate(['/server-error']);
                         }, 1000);
                     }
                     else {
                         _this.toastr.error(apiResponse.message, 'error occured');
                     }
-                }, function (err) {
-                    _this.toastr.error('Try Again', 'Error!');
                 });
             } // end condition
         }; // end signupFunction
@@ -3206,8 +2977,7 @@ var SignupComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_app_service__WEBPACK_IMPORTED_MODULE_1__["AppService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
             ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"],
-            _sort_countries_pipe__WEBPACK_IMPORTED_MODULE_3__["SortCountriesPipe"],
-            ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_5__["Ng4LoadingSpinnerService"]])
+            _sort_countries_pipe__WEBPACK_IMPORTED_MODULE_3__["SortCountriesPipe"]])
     ], SignupComponent);
     return SignupComponent;
 }());
@@ -3231,17 +3001,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./login/login.component */ "./src/app/user/login/login.component.ts");
 /* harmony import */ var _signup_signup_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./signup/signup.component */ "./src/app/user/signup/signup.component.ts");
 /* harmony import */ var _forgot_password_forgot_password_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./forgot-password/forgot-password.component */ "./src/app/user/forgot-password/forgot-password.component.ts");
-/* harmony import */ var _reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./reset-password/reset-password.component */ "./src/app/user/reset-password/reset-password.component.ts");
-/* harmony import */ var _email_verify_email_verify_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./email-verify/email-verify.component */ "./src/app/user/email-verify/email-verify.component.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -3257,15 +3025,14 @@ var UserModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"],
-                _angular_router__WEBPACK_IMPORTED_MODULE_7__["RouterModule"].forChild([
+                _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormsModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"],
+                _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"].forChild([
                     { path: 'signup', component: _signup_signup_component__WEBPACK_IMPORTED_MODULE_3__["SignupComponent"] },
-                    { path: 'forgot-password', component: _forgot_password_forgot_password_component__WEBPACK_IMPORTED_MODULE_4__["ForgotPasswordComponent"] },
-                    { path: 'email-verify/:userId', component: _email_verify_email_verify_component__WEBPACK_IMPORTED_MODULE_6__["EmailVerifyComponent"] },
-                    { path: 'reset-password/:userId', component: _reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_5__["ResetPasswordComponent"] }
+                    { path: 'forgot-password', component: _forgot_password_forgot_password_component__WEBPACK_IMPORTED_MODULE_4__["ForgotPasswordComponent"] }
                 ])
             ],
-            declarations: [_login_login_component__WEBPACK_IMPORTED_MODULE_2__["LoginComponent"], _signup_signup_component__WEBPACK_IMPORTED_MODULE_3__["SignupComponent"], _forgot_password_forgot_password_component__WEBPACK_IMPORTED_MODULE_4__["ForgotPasswordComponent"], _reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_5__["ResetPasswordComponent"], _email_verify_email_verify_component__WEBPACK_IMPORTED_MODULE_6__["EmailVerifyComponent"]]
+            declarations: [_login_login_component__WEBPACK_IMPORTED_MODULE_2__["LoginComponent"], _signup_signup_component__WEBPACK_IMPORTED_MODULE_3__["SignupComponent"], _forgot_password_forgot_password_component__WEBPACK_IMPORTED_MODULE_4__["ForgotPasswordComponent"]]
         })
     ], UserModule);
     return UserModule;
@@ -3336,7 +3103,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! F:\ProjectTODO\Frontend\ToDoListProject-frontend\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! E:\Project\ToDoList\ToDoListFrontend\src\main.ts */"./src/main.ts");
 
 
 /***/ }),

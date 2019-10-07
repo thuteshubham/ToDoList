@@ -130,7 +130,7 @@ module.exports = "/* based on angular-toastr css https://github.com/Foxandxss/an
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\r\n"
 
 /***/ }),
 
@@ -662,10 +662,10 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\ProjectTODO\Frontend\ToDoListProject-frontend\src\styles.css */"./src/styles.css");
-__webpack_require__(/*! F:\ProjectTODO\Frontend\ToDoListProject-frontend\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
-__webpack_require__(/*! F:\ProjectTODO\Frontend\ToDoListProject-frontend\node_modules\ngx-toastr\toastr.css */"./node_modules/ngx-toastr/toastr.css");
-module.exports = __webpack_require__(/*! F:\ProjectTODO\Frontend\ToDoListProject-frontend\node_modules\font-awesome\css\font-awesome.css */"./node_modules/font-awesome/css/font-awesome.css");
+__webpack_require__(/*! E:\Project\ToDoList\ToDoListFrontend\src\styles.css */"./src/styles.css");
+__webpack_require__(/*! E:\Project\ToDoList\ToDoListFrontend\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+__webpack_require__(/*! E:\Project\ToDoList\ToDoListFrontend\node_modules\ngx-toastr\toastr.css */"./node_modules/ngx-toastr/toastr.css");
+module.exports = __webpack_require__(/*! E:\Project\ToDoList\ToDoListFrontend\node_modules\font-awesome\css\font-awesome.css */"./node_modules/font-awesome/css/font-awesome.css");
 
 
 /***/ })

@@ -5475,7 +5475,7 @@ window.global = window;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! F:\ProjectTODO\Frontend\ToDoListProject-frontend\src\polyfills.ts */"./src/polyfills.ts");
+module.exports = __webpack_require__(/*! E:\Project\ToDoList\ToDoListFrontend\src\polyfills.ts */"./src/polyfills.ts");
 
 
 /***/ })
